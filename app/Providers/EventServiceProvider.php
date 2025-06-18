@@ -18,6 +18,23 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+
+        \App\Events\SubscriptionCancelledEvent::class => [
+            \App\Listeners\SendCancellationNotificationListener::class,
+            \App\Listeners\ProcessRefundListener::class,
+            \App\Listeners\UpdateBillingRecordsListener::class,
+            \App\Listeners\LogSubscriptionActivityListener::class,
+        ],
+
+        \App\Events\SubscriptionReactivatedEvent::class => [
+            \App\Listeners\SendReactivationNotificationListener::class,
+            \App\Listeners\UpdateBillingRecordsListener::class,
+            \App\Listeners\LogSubscriptionActivityListener::class,
+        ],
+
+        \App\Events\SubscriptionStatusChangedEvent::class => [
+            \App\Listeners\LogSubscriptionActivityListener::class,
+        ],
     ];
 
     /**
