@@ -1,4 +1,4 @@
-# ✅ 4. API Documentation
+# API Documentation
 
 # API Endpoints Summary
 
